@@ -1,0 +1,26 @@
+table{
+    border-collapse: collapse;
+    margin: 30px;
+    text-align: center;
+
+}
+
+table:hover{
+    cursor: pointer;
+}
+
+table,th,td{
+    border: 1px solid black;
+}
+
+table td{
+    width: 30px;
+    height:30px;
+}
+.number-row{
+    border-bottom: 3px solid black;
+}
+
+.row :first-child{
+    border-right: 3px solid black;
+}
