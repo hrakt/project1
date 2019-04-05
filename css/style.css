@@ -10,7 +10,14 @@ table:hover{
 }
 
 table,th,td{
+    opacity: 1.0;
     border: 1px solid black;
+}
+td{
+    background:grey;
+}
+td:hover{
+    opacity: 0.4;
 }
 
 table td{
