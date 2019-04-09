@@ -3,6 +3,7 @@ table{
     margin: 30px;
     text-align: center;
 
+
 }
 
 table:hover{
@@ -24,10 +25,18 @@ table td{
     width: 30px;
     height:30px;
 }
+
+td::after{
+    pointer-events: none;
+}
 .number-row{
     border-bottom: 3px solid black;
 }
 
 .row :first-child{
     border-right: 3px solid black;
+}
+
+p{
+    align-content: center;
 }
