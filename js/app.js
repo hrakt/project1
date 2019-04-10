@@ -39,7 +39,6 @@ class PC extends Player {
 
 
 var player1 = new Player('player1',arr1);
-var player2 = new Player('player2', arr2);
 var player3 = new PC('PC',arr2);
 
 
@@ -55,8 +54,6 @@ var game = {
    
 }
 
-//temporary variables go here
-const numOfShips = 6; // temporary variable that determines how many ships                          are going to be placed
 
 
 //create an object that will hold the ship and all the info about it
@@ -64,7 +61,7 @@ const numOfShips = 6; // temporary variable that determines how many ships      
 //this function will fill empty everywhere
 const fillTheTableWithTheArrayV3 = (arr,table) =>{
 
-    // console.log($(`#${table} .number-row`).html());
+
     for(let arrRow=0,tRow=1;arrRow<arr.length,tRow<11; arrRow++,tRow++){
         for(let i = 1,j=0;i<=10,j<arr[0].length;i++,j++){
             ($(`#${table} .${tRow}`).children().eq(i).html(" "));
@@ -75,11 +72,18 @@ const fillTheTableWithTheArrayV3 = (arr,table) =>{
 
 //create a v2 of fillTableWithTheArray that does the same thing for the any table
 const fillTheTableWithTheArrayV2 = (arr,table) =>{
-
-    // console.log($(`#${table} .number-row`).html());
     for(let arrRow=0,tRow=1;arrRow<arr.length,tRow<11; arrRow++,tRow++){
         for(let i = 1,j=0;i<=10,j<arr[0].length;i++,j++){
-            ($(`#${table} .${tRow}`).children().eq(i).html(arr[arrRow][j]));
+            if(arr[arrRow][j] == 0){
+                ($(`#${table} .${tRow}`).children().eq(i).html(" "));
+            }
+                else if(arr[arrRow][j] == -1){
+                    ($(`#${table} .${tRow}`).children().eq(i).css('background-color','red'));
+                }
+            else {
+                ($(`#${table} .${tRow}`).children().eq(i).css('background-color','white'));
+            }
+                
         }
     }
 }
@@ -92,7 +96,6 @@ const fillTheTableWithTheArrayV2 = (arr,table) =>{
 const placeShip = () =>{
     $(".ship-button").click(fucntion = (e) =>{
         let shipLength = Number($(e.target).attr('length'));
-        console.log(`ship length is ${shipLength}`);
         placeBoard(shipLength,'first-table',e.target);
 
 
@@ -158,16 +161,16 @@ let col = null;
 let row = null;
 const placeBoard = (length,tableID,button) =>{
     $(`#${tableID}`).click(fucntion = (e) =>{
-        console.log(e.target);
+
         
         col = Number((e.target.getAttribute('data-col'))) - 1;
         row =($(e.target.parentElement).attr('class')).split(" "); 
-        console.log(row);
+
         row = Number((row[0])) - 1; 
         
-        console.log(returnCheckmark());
 
-        console.log(`row is ${row} col is ${col}`);
+
+
         
         if(checkShip(arr1,length,row,col,returnCheckmark())){
             if(checkArea(arr1,length,row,col,returnCheckmark())){
@@ -201,16 +204,16 @@ const returnCheckmark = () =>{
 
 
 
-console.log(arr1);
+
 
 
 //this function uses the two previous functions and places the ships on the board
 const placeShips = (arr) =>{
    let randCol,randRow,randD; // these are our rand values that will be created 
 
-   console.log(`game.shipArr is `);
+
     for(let i = 0;i<game.shipArr.length;i++){
-        console.log(`im placing ${game.shipArr[i].name}`)
+
         let length = game.shipArr[i].length;
         
         randCol = randNum(arr,length);
@@ -287,14 +290,14 @@ const hitShip = (arr,target,table) =>{
         if(arr[row][col] != 0 ){
             arr[row][col] = -1;
             // fillTheTableWithTheArrayV2(arr,table);
-            console.log(`table is ${table} and row is ${row} col is ${col}`)
+
             styleBlock(table,[row,col],'hit');
             if(checkIfOver(arr) == true){
                 game.winner = game.gameTurn;
-                console.log("game is over");
+                alert(`Game is over. Game winner ${game.winner}`);
             }
             else{
-                console.log("im checking and its not over")
+                
             }
 
         }else{
@@ -323,10 +326,10 @@ const pcHit = (arr,targetArr) => {
         fillTheTableWithTheArrayV2(player1.board,'first-table');
         if(checkIfOver(arr) == true){
             game.winner = game.gameTurn;
-            console.log("game is over");
+            alert(`Game is over. Game winner ${game.winner}`);
         }
         else{
-            console.log("im checking and its not over")
+
         }
     }else{
         alert ("PC missed");
@@ -363,12 +366,12 @@ const pcPlay = () =>{
 // function that will determine based on the hitArr where to hit next
 
 
-const pcSmartHit = () => {
+// const pcSmartHit = () => {
     // let currentArr = player3.hitArr;
     // let currentArr = [{postionions:[]}] // this is an array of objects that will hold all the values of the ship
-    const currentArr = [[0,2],[1,2]];
+    // const currentArr = [[0,2],[1,2]];
 
-}
+// }
 
 
 // if(currentArr[i].includes(0)){
@@ -553,19 +556,18 @@ fillTheTableWithTheArrayV3(arr2,'second-table')
 
 
 
-$('#play-button').click(fucntion =() =>{
-    console.log("game starts");
+$('.play-button').click(fucntion =() =>{
 
 
-    // getClick2('first-table',arr1);
     getClick2('second-table',arr2);
-    // placeShips(arr1);
+
     placeShips(arr2);
     fillTheTableWithTheArrayV2(arr1,'first-table')
     fillTheTableWithTheArrayV3(arr2,'second-table')
     updateBoard();
     updateStat();
-    
+    $('.play-button').remove();
+    $('#check-box').remove();
     
 })
 

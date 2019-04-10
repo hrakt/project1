@@ -5,6 +5,8 @@ this game allows a player to play gainst the computer that generates its moves r
 
 A screenshot or screenshots of your actual game makes your readme more colorful :)
 
+https://imgur.com/a/DSGYYPV
+
 Technologies Used: List of the technologies used.
 HTML
 Javascript
