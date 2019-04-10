@@ -2,10 +2,14 @@ table{
     border-collapse: collapse;
     margin: 30px;
     text-align: center;
-
+    display: inline-flex;
+    flex-direction: row;
+    
 
 }
-
+body{
+    background-color: rgb(29, 132, 192);
+}
 table:hover{
     cursor: pointer;
 }
@@ -39,4 +43,21 @@ td::after{
 
 p{
     align-content: center;
+}
+#first-table{
+    float: left;
+}
+
+#second-table{
+    float: right;
+}
+
+#buttons{
+    position: absolute;
+    left:450px;
+    
+}
+.play-button{
+    width:40px;
+    height: 20px;
 }
