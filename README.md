@@ -5,7 +5,7 @@ this game allows a player to play gainst the computer that generates its moves r
 
 A screenshot or screenshots of your actual game makes your readme more colorful :)
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/DSGYYPV"><a href="//imgur.com/DSGYYPV"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+![screenshot](https://imgur.com/lkzlBVZ)
 
 Technologies Used: List of the technologies used.
 HTML
